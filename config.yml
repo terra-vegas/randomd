@@ -1,0 +1,33 @@
+accounts:
+  - name: alice
+    coins: ["20000rndm", "200000000stake"]
+  - name: bob
+    coins: ["10000rndm", "100000000stake"]
+  - name: random-validator
+    coins: ["100000000stake", "100000000rndm"]
+validator:
+  name: alice
+  staked: "20000rndm"
+  name: random-validator
+  staked: "100000000rndm"
+build:
+  main: "cmd/wasmd"
+  binary: "randomd"
+
+client:
+  openapi:
+    path: "docs/static/openapi.yml"
+  vuex:
+    path: "vue/src/store"
+faucet:
+  name: bob
+  coins: ["5token", "100000rndm"]
+genesis:
+  chain_id: "random-testnet"
+  app_state:
+    gov.deposit_params.min_deposit.denom: "rndm"
+    mint.params.mint_denom: "rndm"
+    crisis.constant_fee.denom: "rndm"
+    staking:
+      params:
+        bond_denom: "rndm"
